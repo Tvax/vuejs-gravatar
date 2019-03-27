@@ -3,7 +3,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     
     <div class="content">
-      <div class="title m-b-md" @click="$router.go(-1)">
+      <div class="title m-b-md">
           vuejs-gravatar
       </div>
       
