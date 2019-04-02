@@ -43,6 +43,8 @@
 import { api } from '../main';
 import Comment from './Comment.vue';
 
+const DEFAULT_AVATAR_URI = 'http://www.ville-fourqueux.fr/var/ville_fourqueux/storage/images/mediatheque/le-village/le-village-en-images/eglise-sainte-croix/309177-3-fre-FR/Eglise-Sainte-Croix_diaporama-thumbnail.jpg';
+
 export default {
   name: 'app',
   data () {
@@ -67,8 +69,13 @@ export default {
             this.isHasComment = false;
             this.errorMail=true;
           }else{
+            const uri = response.data.uri;
+            if(uri === ''){
+              this.avatar = DEFAULT_AVATAR_URI;
+            }else{
+              this.avatar=response.config.baseURL+response.data.uri;
+            }
             this.isHasComment = true;
-            this.avatar=response.config.baseURL+response.data.uri;
             this.errorMail=false;
           }
         })
