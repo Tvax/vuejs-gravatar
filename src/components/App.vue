@@ -68,7 +68,7 @@ export default {
             this.errorMail=true;
           }else{
             this.isHasComment = true;
-            this.avatar=response.config.baseURL+response.data.avatar;
+            this.avatar=response.config.baseURL+response.data.uri;
             this.errorMail=false;
           }
         })
