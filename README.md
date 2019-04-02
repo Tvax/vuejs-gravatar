@@ -11,6 +11,8 @@ npm install
 # install axios for api
 npm install axios --save
 
+# change baseURL in main.js for api
+
 # serve with hot reload at localhost:8080
 npm run dev
 
