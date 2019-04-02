@@ -69,11 +69,12 @@ export default {
             this.isHasComment = false;
             this.errorMail=true;
           }else{
-            const uri = response.data.uri;
+            const uri = response.data.avatar;
             if(uri === ''){
               this.avatar = DEFAULT_AVATAR_URI;
             }else{
-              this.avatar=response.config.baseURL+response.data.uri;
+              console.log("nya");
+              this.avatar=response.config.baseURL+response.data.avatar;
             }
             this.isHasComment = true;
             this.errorMail=false;
