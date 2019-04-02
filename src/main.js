@@ -3,7 +3,7 @@ import axios from 'axios';
 import App from './components/App.vue'
 
 export const api = axios.create({
-  baseURL: 'https://www.iutbayonne.univ-pau.fr/~klevron/api/'
+  baseURL: 'http://localhost/laravel/projet/laravel-gravatar/public/'
 });
 
 new Vue({

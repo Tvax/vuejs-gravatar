@@ -15,7 +15,11 @@
             <br>
             <input type="email" v-model="email" placeholder="Your email">
           </p>
-      
+
+          <p v-if=errorMail id="errorMail">
+            invalide mail
+          </p>
+
           <p>
             <span>Comment:</span>
             <br>
@@ -37,7 +41,7 @@
 
 <script>
 import { api } from '../main';
-import Comment from './Comment.vue'
+import Comment from './Comment.vue';
 
 export default {
   name: 'app',
@@ -47,7 +51,8 @@ export default {
       email: 'Welcome to Your Vue.js App',
       isHasComment: false,
       finalEmail: '',
-      finalComment: ''
+      finalComment: '',
+      errorMail:false,
     }
   },
    components: {
@@ -55,28 +60,27 @@ export default {
   },
   methods:{
     submitComment(){
-      api.get('/avatars/',  { email: this.email })
+      api.get('/api/avatar/'+this.email)
         .then(response => {
-          console.log(response)
-          if(response.status === 'failed'){
-            //set default image
-            this.avatar = "https://image.freepik.com/icones-gratuites/image-d-39-avatar-de-man-pour-le-profil_318-68886.jpg";
+          console.log(response);
+          if(response.data.status === 'error'){
             this.isHasComment = false;
+            this.errorMail=true;
           }else{
             this.isHasComment = true;
+            this.avatar=response.config.baseURL+response.data.uri;
+            this.errorMail=false;
           }
         })
         .catch(error => {
-          console.log(error)
+          console.log(error);
         })
         .finally(() => {
-          this.avatar = "https://image.freepik.com/icones-gratuites/image-d-39-avatar-de-man-pour-le-profil_318-68886.jpg";
           this.finalComment = this.comment;
           this.finalEmail = this.email;
-          this.isHasComment = true;
         });
     }
-  }
+  } 
 }
 </script>
 
@@ -88,6 +92,10 @@ export default {
       font-weight: 200;
       height: 90vh;
       margin: 0;
+  }
+
+  #errorMail{
+    color:#F00;
   }
 
   .full-height {

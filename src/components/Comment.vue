@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="email && comment" id="comment-content">
-      <img :src="`${avatar}`"/>
+      <img :src="avatar"/>
       <div id="comment-detail">
         <p>{{ email }}</p>
         <p>{{ comment }}</p>
