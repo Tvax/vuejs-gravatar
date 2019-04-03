@@ -49,8 +49,8 @@ export default {
   name: 'app',
   data () {
     return {
-      comment: 'Welcome to Your Vue.js App',
-      email: 'Welcome to Your Vue.js App',
+      comment: '',
+      email: '',
       isHasComment: false,
       finalEmail: '',
       finalComment: '',
